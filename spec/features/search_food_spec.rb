@@ -3,12 +3,12 @@ require 'rails_helper'
 RSpec.describe "As a user" do
   describe "when I visit the root path and search sweet potatoes I should be on a foods page" do
     it "I should see a total number of items returned by the search" do
-
       # As a user,
       # When I visit "/"
       visit "/"
       # And I fill in the search form with "sweet potatoes"
-      fill_in :search, with: "sweet potatoes"
+      # fill_in :search, with: "sweet potatoes"
+      find('.form-inline').set("sweet potatoes")
       # (Note: Use the existing search form)
       # And I click "Search"
       click_button "Search"
