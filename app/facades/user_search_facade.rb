@@ -2,30 +2,24 @@ class UserSearchFacade
   def initialize(food)
     @food = food
     @connection = Faraday.new(:url => 'https://developer.nrel.gov/api') do |f|
-        req.headers['X-API-KEY']= ENV["DATA_GOV_API_KEY"]
+        f.headers['X-API-KEY']= ENV["DATA_GOV_API_KEY"]
         f.adapter  Faraday.default_adapter
     end
   end
 
-  def get_url
-    @connection.get('https://www.data.gov/food/')
+  def food_count
+    fetch_data
   end
-
-  def retreive_data
-    get_url
-  end
-
-
-
 
 
   private
 
 
-  def get_data
-    response = conn.get do |req|
-      binding.pry
+  def fetch_data(uri_path)
+    response = @connection.get do |req|
+      req.url uri_path
     end
+    JSON.parse(response.body, symbolize_names: true)
   end
 
 
