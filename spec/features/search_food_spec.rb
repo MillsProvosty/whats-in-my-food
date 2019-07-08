@@ -11,6 +11,7 @@ RSpec.describe "As a user" do
       find('.form-inline').set("sweet potatoes")
       # (Note: Use the existing search form)
       # And I click "Search"
+      save_and_open_page
       click_button "Search"
       # Then I should be on page "/foods"
       expect(current_path).to eq("/foods")
