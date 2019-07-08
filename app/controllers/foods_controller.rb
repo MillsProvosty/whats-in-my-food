@@ -1,7 +1,7 @@
 class FoodsController < ApplicationController
   def index
     render locals: {
-      facade: UserSearchFacade.new(params[:food])
+      facade: UserSearchFacade.new
     }
   end
 end
