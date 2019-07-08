@@ -11,9 +11,9 @@ RSpec.describe "As a user" do
       find('.form-inline').set("sweet potatoes")
       # (Note: Use the existing search form)
       # And I click "Search"
-      save_and_open_page
       click_button "Search"
       # Then I should be on page "/foods"
+      save_and_open_page
       expect(current_path).to eq("/foods")
       # Then I should see a total of the number of items returned by the search. (531 for sweet potatoes)
       expect(page).to have_content("531 Sweet Potatoes")
